@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth.decorators import login_required
+from sormcompany.models import *
 
 # Create your views here.
 
