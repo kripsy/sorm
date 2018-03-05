@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iGRC</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+</head>
+<body>
+
+<style>
+   body {
+    background-image: url(/static/pictures/fon.jpeg); /* Путь к фоновому изображению */
+       background-size: cover;
+   }
+  </style>
+
+
+<div class="row">
+    <div class="columns small-4"></div>
+    <div class="columns">
+<ul class="menu menu-hover-lines">
+
+    {% if username %}
+        <li> <a href="/auth/logout">Logout</a></li>
+  <li class="active"><a href="/auth/home">Home</a></li>
+    {% else %}
+    <li class="active"><a href="/auth/login">Login</a></li>
+    {% endif %}
+
+  <li><a href="#">About Us</a></li>
+  <li><a href="#">Blog</a></li>
+  <li><a href="#">Services</a></li>
+  <li><a href="#">Products</a></li>
+  <li><a href="#">Contact</a></li>
+    </div>
+</ul>
+</div>
+
+
+{% block sormauthsormauth %}{% endblock %}
+{% block sormauthmainpage %}{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+
+</body>
+</html>

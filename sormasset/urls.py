@@ -16,11 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'auth/', include('sormauth.urls')),
-    url(r'^asset/', include('sormasset.urls')),
-    url(r'^', views.main, name='main'),
+    url(r'^', views.mainasset, name= 'mainasset'),
 ]

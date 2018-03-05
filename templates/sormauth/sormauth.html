@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormauthsormauth %}
+<div class="row">
+    <div class="columns small-6 large-centered"><!-- ... -->
+<form class="callout text-center" action="/auth/login" method="post">
+    {% csrf_token %}
+  <h2>Login</h2>
+  <div class="floated-label-wrapper">
+    <label for="full-name">Full name</label>
+    <input type="text" id="full-name" name="full name input" placeholder="Full name">
+  </div>
+
+  <div class="floated-label-wrapper">
+    <label for="pass">Password</label>
+    <input type="password" id="pass" name="password input" placeholder="Password">
+  </div>
+  <input class="button expanded" type="submit" value="Sign up">
+</form>
+
+
+
+  </div>
+</form>
+    </div>
+    {% endblock %}
+
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

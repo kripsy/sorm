@@ -25,7 +25,7 @@ SECRET_KEY = 'r=&#v3k*xrkp1@^6$nqd889p$&24amhe3+k@#0h9^o!p&6tro2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.37', 'localhost']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sormauth',
+    'sormasset',
+    'sormcompany'
 ]
 
 MIDDLEWARE = [
@@ -116,7 +118,16 @@ USE_L10N = True
 USE_TZ = True
 
 
+LOGIN_URL = '/auth/login/'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    #'/Users/egn/PycharmProjects/egrc/static'
+    os.path.join(BASE_DIR, 'static')
+
+
+]

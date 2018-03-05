@@ -16,8 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-
 urlpatterns = [
-    url(r'^auth/', views.sormauth, name= 'sormauth'),
-    url(r'^', views.mainpage, name= 'mainpage'),
+    url(r'^login', views.sormauth, name= 'sormauth'),
+    url(r'^logout', views.sormauth, name= 'sormlogout'),
+    url(r'^home', views.mainpage, name= 'mainpage'),
 ]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormauthmainpage %}
+<div class="row">
+    <div class="columns small-6 large-centered"><!-- ... -->
+<form class="callout text-center">
+  <h2>About you</h2>
+  <div class="floated-label-wrapper">
+    <label for="full-name">Full name</label>
+    <input type="text" readonly id="full-name" name="full name input" placeholder="Full name" value="{{ username }}">
+  </div>
+  <div class="floated-label-wrapper">
+    <label for="email">Email</label>
+    <input type="email" readonly id="email" name="email input" placeholder="Email" value="{{ email }}">
+  </div>
+    <div class="floated-label-wrapper">
+    <label for="full-name">Group</label>
+    <input type="text" readonly id="email" name="email input" placeholder="Permission" value="{{ group }}">
+  </div>
+</form>
+
+
+  </div>
+</form>
+    </div>
+    {% endblock %}
+
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>
