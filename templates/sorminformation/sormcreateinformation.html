@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormcreateinformation %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Создание информационного актива</h2>
+    <div class="primary callout">
+      <p><strong>Укажите наименование информационного актива, тип информационного актива и категорию информационного актива и нажмите "Сохранить"</strong></p>
+    </div>
+  </div>
+</div>
+
+    <form action="/information/create_information" method="post">
+    {% csrf_token %}
+<div class="row">
+
+  <div class="columns">
+
+  <label>Тип информационного актива
+  <select name = type_information>
+    {% for type_information in Type_information_all %}
+        <option value="{{ type_information.id }}">{{ type_information.name }}</option>
+    {% endfor %}
+</select>
+</label>
+
+
+    <label>Имя организационной единицы
+    <input type="text" placeholder="Наименование информационного актива" required name = "information_name">
+    </label>
+
+   <label>Категория информационного актива
+  <select name = category_information>
+    {% for category_information in Category_information_all %}
+        <option value="{{ category_information.id }}">{{ category_information.name }}</option>
+    {% endfor %}
+</select>
+</label>
+
+
+<input class="button" type="submit" value="Save">
+  </div>
+</div>
+    </form>
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormtypeinformationmainpage %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Таблица типов информационных активов</h2>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="columns">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Наименование типа ИА</th>
+              <th>Изменить</th>
+          </tr>
+        </thead>
+
+
+            <tbody>
+            {% for TypeInformation in Type_information_all %}
+              <tr>
+                <td>{{ TypeInformation.name }}</td>
+                  <td style="display:block;"><a href="/information/delete_type_information/{{ TypeInformation.id }}" class="button">Удалить</a></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+
+
+            <tfoot>
+            </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

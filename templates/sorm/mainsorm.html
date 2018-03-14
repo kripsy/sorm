@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>iGRC</title>
+    <title>sorm</title>
     <link rel="stylesheet" type="text/css" href="/static/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="/static/css/app.css">
 </head>
@@ -10,35 +10,105 @@
 
 <style>
    body {
-    background-image: url(/static/pictures/fon.jpeg); /* Путь к фоновому изображению */
+    background-image: url(/static/pictures/4fon.jpg); /* Путь к фоновому изображению */
        background-size: cover;
    }
   </style>
 
 
-<div class="row">
-    <div class="columns small-4"></div>
-    <div class="columns">
-<ul class="menu menu-hover-lines">
+<div class="multilevel-offcanvas off-canvas position-right" id="offCanvasRight" data-off-canvas>
 
-    {% if username %}
-        <li> <a href="/auth/logout">Logout</a></li>
-  <li class="active"><a href="/auth/home">Home</a></li>
-    {% else %}
-    <li class="active"><a href="/auth/login">Login</a></li>
-    {% endif %}
+  <ul class="vertical menu" data-accordion-menu>
+    <li><a href="#">Организации</a>
+      <ul class="menu vertical nested">
+        <li><a href="/company/main">Просмотр всех</a></li>
+        <li><a href="/company/create_company">Создать организацию</a></li>
+       </ul>
+    </li>
+    <li><a>Информация</a>
+      <ul class="menu vertical nested">
+        <li><a href="/information/type_information">Типы информации</a></li>
+          <li><a href="/information/create_type_information">Создать тип информации</a></li>
+          <li><a href="/information/information">Информационные активы</a></li>
+          <li><a href="/information/create_information">Создать информационный актив</a></li>
+          <li><a href="/information/category_information">Категории информационных активов</a></li>
+          <li><a href="/information/create_category_information">Создать категорию информационного актива</a></li>
+       </ul>
+     </li>
 
-  <li><a href="#">About Us</a></li>
-  <li><a href="#">Blog</a></li>
-  <li><a href="#">Services</a></li>
-  <li><a href="#">Products</a></li>
-  <li><a href="#">Contact</a></li>
-    </div>
-</ul>
+      <li><a>Контрмера</a>
+      <ul class="menu vertical nested">
+        <li><a href="/information/type_information">Просмотр контрмер</a></li>
+          <li><a href="/information/create_type_information">Создать контрмеру</a></li>
+       </ul>
+     </li>
+
+
+
+    <li><a href="#">CITIES</a>
+      <ul class="menu vertical nested">
+        <li><a href="#">London</a></li>
+        <li><a href="#">New York</a></li>
+        <li><a href="#">Paris</a></li>
+       </ul>
+    </li>
+   </ul>
+  <ul class="vertical menu">
+    <li class="off-canvas-menu-item"><a href="/auth/home">О пользователе</a></li>
+
+    <li><a href="#">Support</a></li>
+  </ul>
+  <ul class="menu simple social-links">
+    <li><a href="#" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+  </ul>
 </div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+  <div class="nav-bar">
+      <div class="nav-bar-left">
+        <a class="nav-bar-logo"><img class="logo" src="/static/pictures/fon2.png"></a>
+      </div>
+      <div class="nav-bar-right">
+        <ul class="menu">
+            {% if username %}
+          <li class="hide-for-small-only"><a href="/auth/logout">Выйти</a></li>
+            {% else %}
+            <li class="hide-for-small-only"><a href="/auth/login">Войти</a></li>
+            {% endif %}
+          <li>
+          <li>
+            <button class="offcanvas-trigger" type="button" data-open="offCanvasRight">
+              <span class="offcanvas-trigger-text hide-for-small-only">Menu</span>
+              <div class="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+              </div>
+            </button>
+          </li>
+        </ul>
+    </div>
+  </div>
+ </div>
+
+
+
+
+
 
 {% block sormauthsormauth %}{% endblock %}
 {% block sormauthmainpage %}{% endblock %}
+{% block sormcompanymainpage %}{% endblock %}
+{% block sormcreatecompany %}{% endblock %}
+{% block sormtypeinformationmainpage %}{% endblock %}
+{% block sormcreatetypeinformation %} {% endblock %}
+{% block sorminformation %}{% endblock %}
+{% block sormcreateinformation %}{% endblock %}
+{% block sormcategoryinformation %} {% endblock %}
+{% block sormcreatecategoryinformation %} {% endblock %}
 
 <script src="/static/js/vendor/jquery.js"></script>
 <script src="/static/js/vendor/what-input.js"></script>

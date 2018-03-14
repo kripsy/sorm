@@ -28,6 +28,7 @@ def sormauth(request):
 
 @login_required
 def sormlogout(request):
+    
     logout(request)
     return render_to_response('sorm/mainsorm.html')
 

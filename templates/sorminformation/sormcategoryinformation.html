@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormcategoryinformation %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Таблица категорий информационных активов</h2>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="columns">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+              <th>Наименование категории информационного актива</th>
+              <th>Изменить</th>
+          </tr>
+        </thead>
+
+
+            <tbody>
+            {% for Categoryinformation in Category_information_all %}
+              <tr>
+                <td>{{ Categoryinformation.name }}</td>
+                  <td style="display:block;"><a href="/information/delete_category_information/{{ Categoryinformation.id }}" class="button">Удалить</a></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+
+
+            <tfoot>
+            </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

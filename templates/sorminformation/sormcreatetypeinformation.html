@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormcreatetypeinformation %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Создание типа информационного актива</h2>
+    <div class="primary callout">
+      <p><strong>Укажите тип информационного актива и наименование информационного актива и нажмите "Сохранить"</strong></p>
+    </div>
+  </div>
+</div>
+
+    <form action="/information/create_type_information" method="post">
+    {% csrf_token %}
+<div class="row">
+
+  <div class="columns">
+
+
+    <label>Тип информационного актива
+    <input type="text" placeholder="Тип информационного актива" required name = "type_information_name">
+    </label>
+
+<input class="button" type="submit" value="Сохранить">
+  </div>
+</div>
+    </form>
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

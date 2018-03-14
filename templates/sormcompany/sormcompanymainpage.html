@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormcompanymainpage %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Таблица организационной структуры организации</h2>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="columns">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Наименование организационной единицы</th>
+            <th>Тип организационной единицы</th>
+              <th>Изменить</th>
+          </tr>
+        </thead>
+
+
+            <tbody>
+            {% for Company in Company_all %}
+              <tr>
+                <td style="display:block; width:600px;">{{ Company.name }}</td>
+                <td>{{ Company.type_company.name }}</td>
+                  <td style="display:block;"><a href="/company/delete_company/{{ Company.id }}" class="button">Удалить</a></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+
+            <tfoot>
+            </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

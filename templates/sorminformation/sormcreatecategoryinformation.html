@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormcreatecategoryinformation %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Создание категории информационного актива</h2>
+    <div class="primary callout">
+      <p><strong>Укажите наименование категории информационного актива и нажмите "Сохранить"</strong></p>
+    </div>
+  </div>
+</div>
+
+    <form action="/information/create_category_information" method="post">
+    {% csrf_token %}
+<div class="row">
+
+  <div class="columns">
+
+
+    <label>Наименование категории информационного актива
+    <input type="text" placeholder="Наименование категории информационного актива" required name = "category_name">
+    </label>
+
+
+<input class="button" type="submit" value="Save">
+  </div>
+</div>
+    </form>
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

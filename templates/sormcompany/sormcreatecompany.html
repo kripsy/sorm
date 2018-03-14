@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormcreatecompany %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Создание организационной единицы</h2>
+    <div class="primary callout">
+      <p><strong>Укажите тип организационной единицы и наименование организационной единицы и нажмите "Сохранить"</strong></p>
+    </div>
+  </div>
+</div>
+
+    <form action="/company/create_company" method="post">
+    {% csrf_token %}
+<div class="row">
+
+  <div class="columns">
+
+  <label>Тип организационной единицы
+  <select name = company_type>
+    {% for X in Company_types %}
+        <option value="{{ X.id }}">{{ X.name }}</option>
+    {% endfor %}
+</select>
+</label>
+
+
+    <label>Имя организационной единицы
+    <input type="text" placeholder="Имя организационной единицы" required name = "company_name">
+    </label>
+
+<input class="button" type="submit" value="Сохранить">
+  </div>
+</div>
+    </form>
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

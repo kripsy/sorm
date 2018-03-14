@@ -25,7 +25,7 @@ SECRET_KEY = 'r=&#v3k*xrkp1@^6$nqd889p$&24amhe3+k@#0h9^o!p&6tro2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.37', 'localhost']
+ALLOWED_HOSTS = ['192.168.1.37', 'localhost', '192.168.1.36']
 
 
 # Application definition
@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sormauth',
-    'sormasset',
-    'sormcompany'
+    'sormcompany',
+    'sorminformation',
+    'sormcontrol'
 ]
 
 MIDDLEWARE = [

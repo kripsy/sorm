@@ -16,12 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-admin.autodiscover()
-
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'auth/', include('sormauth.urls')),
-    url(r'company/', include('sormcompany.urls')),
-    url(r'^information/', include('sorminformation.urls')),
-    url(r'^', views.main, name='main'),
+    url(r'^delete_company/(?P<company_id>[0-9]+)$',views.sormdeletecompany, name='sormdeletecompany'),
+    url(r'^create_company',views.sormcreatecompany, name='sormcreatecompany'),
+    url(r'^main', views.sormcompanymain, name='sormcompanymain'),
 ]
