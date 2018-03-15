@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.models import Group
 from sorminformation.models import *
+from sormcontrol.models import *
 
 # Create your views here.
 
@@ -20,7 +21,7 @@ def sormtypeinformation(request):
     args = {}
     u = User.objects.get(username=auth.get_user(request).username)
     args['username'] = u.username
-    args['Type_information_all'] = TypeInformation.objects.all()
+    args['Type_information_all'] = TypeInformation.objects.order_by('name')
 
     return render(request, 'sorminformation/sormtypeinformation.html', args)
 
@@ -47,6 +48,7 @@ def sormcreatetypeinformation(request):
 @login_required
 def sormdeletetypeinformation(request, typeinformation_id):
     args = {}
+    args.update(csrf(request))
     u = User.objects.get(username=auth.get_user(request).username)
     args['username'] = u.username
     try:
@@ -65,7 +67,7 @@ def sorminformation(request):
     args = {}
     u = User.objects.get(username=auth.get_user(request).username)
     args['username'] = u.username
-    args['Information_all'] = InformationAsset.objects.all()
+    args['Information_all'] = InformationAsset.objects.order_by('name')
 
     return render(request, 'sorminformation/sorminformation.html', args)
 
@@ -84,8 +86,8 @@ def sormcreateinformation(request):
             newinformation.save()
             return redirect("/information/information")
         else:
-            args['Type_information_all'] = TypeInformation.objects.all()
-            args['Category_information_all'] = CategoryInformation.objects.all()
+            args['Type_information_all'] = TypeInformation.objects.order_by('name')
+            args['Category_information_all'] = CategoryInformation.objects.order_by('name')
             return render(request, 'sorminformation/sormcreateinformation.html', args)
 
     else:
@@ -95,6 +97,7 @@ def sormcreateinformation(request):
 @login_required
 def sormdeleteinformation(request, information_id):
     args = {}
+    args.update(csrf(request))
     u = User.objects.get(username=auth.get_user(request).username)
     args['username'] = u.username
     try:
@@ -108,11 +111,44 @@ def sormdeleteinformation(request, information_id):
     return redirect("/information/information")
 
 @login_required
+def sormeditinformation(request, information_id):
+    args = {}
+    args.update(csrf(request))
+    u = User.objects.get(username=auth.get_user(request).username)
+    args['username'] = u.username
+    try:
+        information = InformationAsset.objects.get(id=information_id)
+    except InformationAsset.DoesNotExist:
+        return redirect("/information/information")
+
+    user_group = u.groups
+    if (user_group.filter(name = 'delete_object').exists()):
+        if (request.POST):
+            newcontrols_id = request.POST.getlist('newcontrol')
+            newclasscontrols_id = request.POST.getlist('newclass')
+            information.information_controls.clear()
+            information.information_class_controls.clear()
+            information.save()
+            for x in newcontrols_id:
+                information.information_controls.add(Control.objects.get(id=x))
+            information.save()
+            for x in newclasscontrols_id:
+                information.information_class_controls.add(ClassControl.objects.get(id=x))
+            information.save()
+            return redirect("/information/information")
+        args['information'] = InformationAsset.objects.get(id = information_id)
+        args['controls'] = Control.objects.order_by('name')
+        args['classcontrols'] = ClassControl.objects.order_by('name')
+        return render(request, 'sorminformation/sormeditinformation.html', args)
+    return redirect("/information/information")
+
+
+@login_required
 def sormcategoryinformation(request):
     args = {}
     u = User.objects.get(username=auth.get_user(request).username)
     args['username'] = u.username
-    args['Category_information_all'] = CategoryInformation.objects.all()
+    args['Category_information_all'] = CategoryInformation.objects.order_by('name')
 
     return render(request, 'sorminformation/sormcategoryinformation.html', args)
 
@@ -139,6 +175,7 @@ def sormcreatecategoryinformation(request):
 @login_required
 def sormdeletecategoryinformation(request, category_information_id):
     args = {}
+    args.update(csrf(request))
     u = User.objects.get(username=auth.get_user(request).username)
     args['username'] = u.username
     try:
@@ -150,3 +187,54 @@ def sormdeletecategoryinformation(request, category_information_id):
     if (user_group.filter(name = 'delete_object').exists()):
         categoryinformation.delete()
     return redirect("/information/category_information")
+
+
+
+
+
+
+
+@login_required
+def sormcreateenvobject(request):
+    args = {}
+    args.update(csrf(request))
+    u = User.objects.get(username=auth.get_user(request).username)
+    args['username'] = u.username
+    user_group = u.groups
+    if (user_group.filter(name='create_object').exists()):
+        if (request.POST):
+            newenvobject = EnvironmentObject(name = request.POST['envobject_name'])
+            newenvobject.save()
+            return redirect("/information/envobject")
+        else:
+            return render(request, 'sorminformation/sormcreateenvobject.html', args)
+
+    else:
+        return redirect("/information/envobject")
+
+
+@login_required
+def sormenvobject(request):
+    args = {}
+    u = User.objects.get(username=auth.get_user(request).username)
+    args['username'] = u.username
+    args['Envobject_all'] = EnvironmentObject.objects.order_by('name')
+    return render(request, 'sorminformation/sormenvobject.html', args)
+
+
+
+@login_required
+def sormdeleteenvobject(request, envobject_id):
+    args = {}
+    args.update(csrf(request))
+    u = User.objects.get(username=auth.get_user(request).username)
+    args['username'] = u.username
+    try:
+        envobject = EnvironmentObject.objects.get(id=envobject_id)
+    except EnvironmentObject.DoesNotExist:
+        return redirect("/information/envobject")
+
+    user_group = u.groups
+    if (user_group.filter(name = 'delete_object').exists()):
+        envobject.delete()
+    return redirect("/information/envobject")

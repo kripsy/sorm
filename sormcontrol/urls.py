@@ -16,14 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-admin.autodiscover()
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'auth/', include('sormauth.urls')),
-    url(r'company/', include('sormcompany.urls')),
-    url(r'^information/', include('sorminformation.urls')),
-    url(r'^control/', include('sormcontrol.urls')),
-    url(r'^assessment/', include('sormcontrol.urls')),
-    url(r'^', views.main, name='main'),
+
+    url(r'^control', views.sormcontrol, name='sormcontrol'),
+    url(r'^create_control', views.sormcreatecontrol, name='sormcreatecontrol'),
+    url(r'^delete_control/(?P<control_id>[0-9]+)$',views.sormdeletecontrol, name='sormdeletecontrol'),
+
+
 ]

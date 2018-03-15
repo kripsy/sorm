@@ -2,11 +2,11 @@
 
 {% extends 'sorm/mainsorm.html' %}
 
-{% block sorminformation %}
+{% block sormcontrol %}
 
 <div class="row">
   <div class="columns">
-    <h2>Таблица информационных активов</h2>
+    <h2>Таблица контрмер</h2>
   </div>
 </div>
 
@@ -17,23 +17,19 @@
       <table>
         <thead>
           <tr>
-            <th>Наименование информационного актива</th>
-              <th>Тип информационного актива</th>
-              <th>Категория информационного актива</th>
-              <th>Изменить</th>
+            <th>Наименование контрмеры</th>
+              <th>Тип реализации контрмеры</th>
               <th>Удалить</th>
           </tr>
         </thead>
 
 
             <tbody>
-            {% for Information in Information_all %}
+            {% for Control in Control_all %}
               <tr>
-                <td>{{ Information.name }}</td>
-                  <td>{{ Information.type_information.name }}</td>
-                  <td>{{ Information.category_information.name }}</td>
-                  <td><a href="/information/edit_information/{{ Information.id }}" class="button">Изменить</a></td>
-              <td><a href="/information/delete_information/{{ Information.id }}" class="button">Удалить</a></td>
+                <td>{{ Control.name }}</td>
+                  <td>{{ Control.type_realization.name }}</td>
+              <td><a href="/control/delete_control/{{ Control.id }}" class="button">Удалить</a></td>
               </tr>
             {% endfor %}
             </tbody>

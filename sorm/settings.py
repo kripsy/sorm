@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'sormauth',
     'sormcompany',
     'sorminformation',
-    'sormcontrol'
+    'sormcontrol',
+    'sormassessment',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormcreatecontrol %}
+
+<div class="row">
+  <div class="columns">
+    <h2>Создание контрмеры</h2>
+    <div class="primary callout">
+      <p><strong>Укажите наименование контрмеры и нажмите "Сохранить"</strong></p>
+    </div>
+  </div>
+</div>
+
+    <form action="/control/create_control" method="post">
+    {% csrf_token %}
+<div class="row">
+
+  <div class="columns">
+
+
+    <label>Наименование контрмеры
+    <input type="text" placeholder="Наименование контрмеры" required name = "control_name">
+    </label>
+
+
+      <label>Тип реализации контрмеры
+  <select name = type_realization>
+    {% for type_realization in Type_realization_all %}
+        <option value="{{ type_realization.id }}">{{ type_realization.name }}</option>
+    {% endfor %}
+</select>
+</label>
+
+
+
+
+<input class="button" type="submit" value="Save">
+  </div>
+</div>
+    </form>
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

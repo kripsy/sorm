@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+{% extends 'sorm/mainsorm.html' %}
+
+{% block sormeditinformation %}
+
+
+
+
+<form action="/information/edit_information/{{ information.id }}" method="post">
+{% csrf_token %}
+<div class="row">
+  <div class="columns">
+      <div class="medium-6 cell">
+        <div class="floated-label-wrapper">
+    <label>Информационный актив</label>
+    <input type="text" readonly value="{{ information.name }}">
+  </div>
+      </div>
+
+
+
+      <div class="medium-6 cell">
+      <label>Используемые контрмеры
+  <select name="newcontrol" multiple size="10">
+      {% for Control in controls %}
+          {% if Control in information.information_controls.all %}
+              <option value="{{ Control.id }}" selected>{{ Control.name }}</option>
+          {% else %}
+    <option value="{{ Control.id }}">{{ Control.name }}</option>
+      {% endif %}
+      {% endfor %}
+  </select>
+</label>
+
+
+
+      </div>
+
+  <div class="medium-6 cell">
+      <label>Классы используемых СЗИ
+  <select name="newclass" multiple size="10">
+      {% for class in classcontrols %}
+          {% if class in information.information_class_controls.all %}
+              <option value="{{ class.id }}" selected>{{ class.name }}</option>
+          {% else %}
+    <option value="{{ class.id }}">{{ class.name }}</option>
+      {% endif %}
+      {% endfor %}
+  </select>
+</label>
+
+
+
+      </div>
+
+
+   <input class="button" type="submit" value="Save">
+    </div>
+
+  </div>
+</form>
+
+
+
+
+
+{% endblock %}
+
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/vendor/what-input.js"></script>
+<script src="/static/js/vendor/foundation.js"></script>
+<script src="/static/js/app.js"></script>
+ <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+<script>
+    $(document).foundation();
+  </script>
+
+
+</body>
+</html>

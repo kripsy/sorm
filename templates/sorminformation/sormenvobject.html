@@ -2,11 +2,11 @@
 
 {% extends 'sorm/mainsorm.html' %}
 
-{% block sorminformation %}
+{% block sormenvobject %}
 
 <div class="row">
   <div class="columns">
-    <h2>Таблица информационных активов</h2>
+    <h2>Таблица типов объектов среды</h2>
   </div>
 </div>
 
@@ -17,23 +17,17 @@
       <table>
         <thead>
           <tr>
-            <th>Наименование информационного актива</th>
-              <th>Тип информационного актива</th>
-              <th>Категория информационного актива</th>
-              <th>Изменить</th>
+            <th>Наименование типа объекта среды</th>
               <th>Удалить</th>
           </tr>
         </thead>
 
 
             <tbody>
-            {% for Information in Information_all %}
+            {% for Envobject in Envobject_all %}
               <tr>
-                <td>{{ Information.name }}</td>
-                  <td>{{ Information.type_information.name }}</td>
-                  <td>{{ Information.category_information.name }}</td>
-                  <td><a href="/information/edit_information/{{ Information.id }}" class="button">Изменить</a></td>
-              <td><a href="/information/delete_information/{{ Information.id }}" class="button">Удалить</a></td>
+                  <td>{{ Envobject.name }}</td>
+              <td><a href="/information/delete_envobject/{{ Envobject.id }}" class="button">Удалить</a></td>
               </tr>
             {% endfor %}
             </tbody>
