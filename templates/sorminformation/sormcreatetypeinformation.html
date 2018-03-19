@@ -4,8 +4,8 @@
 
 {% block sormcreatetypeinformation %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Создание типа информационного актива</h2>
     <div class="primary callout">
       <p><strong>Укажите тип информационного актива и наименование информационного актива и нажмите "Сохранить"</strong></p>
@@ -15,9 +15,8 @@
 
     <form action="/information/create_type_information" method="post">
     {% csrf_token %}
-<div class="row">
-
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
 
 
     <label>Тип информационного актива

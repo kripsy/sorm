@@ -4,8 +4,8 @@
 
 {% block sormcreatecontrol %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Создание контрмеры</h2>
     <div class="primary callout">
       <p><strong>Укажите наименование контрмеры и нажмите "Сохранить"</strong></p>
@@ -15,9 +15,8 @@
 
     <form action="/control/create_control" method="post">
     {% csrf_token %}
-<div class="row">
-
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
 
 
     <label>Наименование контрмеры

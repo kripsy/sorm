@@ -82,12 +82,15 @@ def sormcreateinformation(request):
     user_group = u.groups
     if (user_group.filter(name='create_object').exists()):
         if (request.POST):
-            newinformation = InformationAsset(name = request.POST['information_name'], type_information= TypeInformation.objects.get(id= request.POST['type_information']), category_information=CategoryInformation.objects.get(id= request.POST['category_information']))
+            newinformation = InformationAsset(name = request.POST['information_name'], type_information= TypeInformation.objects.get(id= request.POST['type_information']),
+                                              category_information=CategoryInformation.objects.get(id= request.POST['category_information']),
+            protectionLevel_information = ProtectionLevelInformation.objects.get(id = request.POST['levelprotection_information']))
             newinformation.save()
             return redirect("/information/information")
         else:
             args['Type_information_all'] = TypeInformation.objects.order_by('name')
             args['Category_information_all'] = CategoryInformation.objects.order_by('name')
+            args['levelprotection_information_all'] = ProtectionLevelInformation.objects.order_by('name')
             return render(request, 'sorminformation/sormcreateinformation.html', args)
 
     else:
@@ -120,24 +123,23 @@ def sormeditinformation(request, information_id):
         information = InformationAsset.objects.get(id=information_id)
     except InformationAsset.DoesNotExist:
         return redirect("/information/information")
-
     user_group = u.groups
     if (user_group.filter(name = 'delete_object').exists()):
         if (request.POST):
-            newcontrols_id = request.POST.getlist('newcontrol')
+            newenvobject_id = request.POST.getlist('newenvobject')
             newclasscontrols_id = request.POST.getlist('newclass')
-            information.information_controls.clear()
+            information.envobject_information.clear()
             information.information_class_controls.clear()
             information.save()
-            for x in newcontrols_id:
-                information.information_controls.add(Control.objects.get(id=x))
+            for x in newenvobject_id:
+                information.envobject_information.add(EnvironmentObject.objects.get(id=x))
             information.save()
             for x in newclasscontrols_id:
                 information.information_class_controls.add(ClassControl.objects.get(id=x))
             information.save()
             return redirect("/information/information")
         args['information'] = InformationAsset.objects.get(id = information_id)
-        args['controls'] = Control.objects.order_by('name')
+        args['envobject_all'] = EnvironmentObject.objects.order_by('name')
         args['classcontrols'] = ClassControl.objects.order_by('name')
         return render(request, 'sorminformation/sormeditinformation.html', args)
     return redirect("/information/information")
@@ -238,3 +240,45 @@ def sormdeleteenvobject(request, envobject_id):
     if (user_group.filter(name = 'delete_object').exists()):
         envobject.delete()
     return redirect("/information/envobject")
+
+
+
+@login_required
+def sormlevelprotectioninformation(request):
+    args = {}
+    u = User.objects.get(username=auth.get_user(request).username)
+    args['username'] = u.username
+    args['Levelprotection_all'] = ProtectionLevelInformation.objects.order_by('name')
+    return render(request, 'sorminformation/sormlevelprotectioninformation.html', args)
+
+
+@login_required
+def sormeditinformation(request, information_id):
+    args = {}
+    args.update(csrf(request))
+    u = User.objects.get(username=auth.get_user(request).username)
+    args['username'] = u.username
+    try:
+        information = InformationAsset.objects.get(id=information_id)
+    except InformationAsset.DoesNotExist:
+        return redirect("/information/information")
+    user_group = u.groups
+    if (user_group.filter(name = 'delete_object').exists()):
+        if (request.POST):
+            newenvobject_id = request.POST.getlist('newenvobject')
+            newclasscontrols_id = request.POST.getlist('newclass')
+            information.envobject_information.clear()
+            information.information_class_controls.clear()
+            information.save()
+            for x in newenvobject_id:
+                information.envobject_information.add(EnvironmentObject.objects.get(id=x))
+            information.save()
+            for x in newclasscontrols_id:
+                information.information_class_controls.add(ClassControl.objects.get(id=x))
+            information.save()
+            return redirect("/information/information")
+        args['information'] = InformationAsset.objects.get(id = information_id)
+        args['envobject_all'] = EnvironmentObject.objects.order_by('name')
+        args['classcontrols'] = ClassControl.objects.order_by('name')
+        return render(request, 'sorminformation/sormeditinformation.html', args)
+    return redirect("/information/information")

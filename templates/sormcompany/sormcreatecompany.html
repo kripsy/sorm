@@ -4,8 +4,8 @@
 
 {% block sormcreatecompany %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Создание организационной единицы</h2>
     <div class="primary callout">
       <p><strong>Укажите тип организационной единицы и наименование организационной единицы и нажмите "Сохранить"</strong></p>
@@ -15,9 +15,8 @@
 
     <form action="/company/create_company" method="post">
     {% csrf_token %}
-<div class="row">
-
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
 
   <label>Тип организационной единицы
   <select name = company_type>

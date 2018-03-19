@@ -29,10 +29,13 @@ urlpatterns = [
     url(r'^create_information', views.sormcreateinformation, name='sormcreateinformation'),
     url(r'^delete_information/(?P<information_id>[0-9]+)$',views.sormdeleteinformation, name='sormdeleteinformation'),
     url(r'^edit_information/(?P<information_id>[0-9]+)$',views.sormeditinformation, name='sormeditinformation'),
+#    url(r'^edit_control_information/(?P<information_id>[0-9]+)$',views.sormeditcontrolinformation, name='sormeditcontrolinformation'),
+
 
     url(r'^category_information', views.sormcategoryinformation, name='sormcategoryinformation'),
-    url(r'^create_category_information', views.sormcreatecategoryinformation, name='sormcreatecategoryinformation'),
-    url(r'^delete_category_information/(?P<category_information_id>[0-9]+)$',views.sormdeletecategoryinformation, name='sormdeletecategoryinformation'),
+    url(r'^levelprotection_information', views.sormlevelprotectioninformation, name='sormlevelprotectioninformation'),
+#    url(r'^create_category_information', views.sormcreatecategoryinformation, name='sormcreatecategoryinformation'),
+#    url(r'^delete_category_information/(?P<category_information_id>[0-9]+)$',views.sormdeletecategoryinformation, name='sormdeletecategoryinformation'),
 
     url(r'^envobject', views.sormenvobject, name='sormenvobject'),
     url(r'^create_envobject', views.sormcreateenvobject, name='sormcreateenvobject'),

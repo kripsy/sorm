@@ -32,7 +32,7 @@ def sormlogout(request):
     logout(request)
     return render_to_response('sorm/mainsorm.html')
 
-
+@login_required
 def mainpage(request):
     args = {}
     user = User.objects.get(username = auth.get_user(request).username)

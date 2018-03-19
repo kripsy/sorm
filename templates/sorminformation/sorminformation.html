@@ -4,24 +4,25 @@
 
 {% block sorminformation %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Таблица информационных активов</h2>
   </div>
 </div>
 
-<div class="row">
-
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <div class="table-scroll">
       <table>
         <thead>
           <tr>
             <th>Наименование информационного актива</th>
               <th>Тип информационного актива</th>
+              <th>Уровень защиты информационного актива</th>
               <th>Категория информационного актива</th>
               <th>Изменить</th>
               <th>Удалить</th>
+              <th>Добавить список контрмер</th>
           </tr>
         </thead>
 
@@ -31,9 +32,11 @@
               <tr>
                 <td>{{ Information.name }}</td>
                   <td>{{ Information.type_information.name }}</td>
+                  <td>{{ Information.protectionLevel_information.name }}</td>
                   <td>{{ Information.category_information.name }}</td>
                   <td><a href="/information/edit_information/{{ Information.id }}" class="button">Изменить</a></td>
               <td><a href="/information/delete_information/{{ Information.id }}" class="button">Удалить</a></td>
+              <td><a href="/information/edit_control_information/{{ Information.id }}" class="button">Удалить</a></td>
               </tr>
             {% endfor %}
             </tbody>

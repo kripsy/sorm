@@ -4,8 +4,8 @@
 
 {% block sormcreatecategoryinformation %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Создание категории информационного актива</h2>
     <div class="primary callout">
       <p><strong>Укажите наименование категории информационного актива и нажмите "Сохранить"</strong></p>
@@ -15,9 +15,8 @@
 
     <form action="/information/create_category_information" method="post">
     {% csrf_token %}
-<div class="row">
-
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
 
 
     <label>Наименование категории информационного актива

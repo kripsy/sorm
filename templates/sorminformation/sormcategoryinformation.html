@@ -4,21 +4,22 @@
 
 {% block sormcategoryinformation %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Таблица категорий информационных активов</h2>
   </div>
+      </div>
 </div>
 
-<div class="row">
-
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <div class="table-scroll">
       <table>
         <thead>
           <tr>
               <th>Наименование категории информационного актива</th>
-              <th>Изменить</th>
+            <!--  <th>Изменить</th>
+          -->
           </tr>
         </thead>
 
@@ -27,7 +28,8 @@
             {% for Categoryinformation in Category_information_all %}
               <tr>
                 <td>{{ Categoryinformation.name }}</td>
-                  <td style="display:block;"><a href="/information/delete_category_information/{{ Categoryinformation.id }}" class="button">Удалить</a></td>
+<!--                   <td style="display:block;"><a href="/information/delete_category_information/{{ Categoryinformation.id }}" class="button">Удалить</a></td>
+     -->
               </tr>
             {% endfor %}
             </tbody>

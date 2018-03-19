@@ -25,7 +25,7 @@ SECRET_KEY = 'r=&#v3k*xrkp1@^6$nqd889p$&24amhe3+k@#0h9^o!p&6tro2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.37', 'localhost', '192.168.1.36']
+ALLOWED_HOSTS = ['192.168.1.37', 'localhost', '192.168.1.36', '127.0.0.1']
 
 
 # Application definition
@@ -127,9 +127,11 @@ LOGIN_URL = '/auth/login/'
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
+STATICFILES_DIRS = (
+
+    os.path.join(BASE_DIR, "static"),
+    '/Users/egn/PycharmProjects/sorm/static',
+
     #'/Users/egn/PycharmProjects/egrc/static'
-    os.path.join(BASE_DIR, 'static')
-
-
-]
+    #os.path.join(BASE_DIR, 'static')
+)

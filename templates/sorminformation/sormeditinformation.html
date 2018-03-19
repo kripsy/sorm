@@ -9,9 +9,8 @@
 
 <form action="/information/edit_information/{{ information.id }}" method="post">
 {% csrf_token %}
-<div class="row">
-  <div class="columns">
-      <div class="medium-6 cell">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
         <div class="floated-label-wrapper">
     <label>Информационный актив</label>
     <input type="text" readonly value="{{ information.name }}">
@@ -21,13 +20,13 @@
 
 
       <div class="medium-6 cell">
-      <label>Используемые контрмеры
-  <select name="newcontrol" multiple size="10">
-      {% for Control in controls %}
-          {% if Control in information.information_controls.all %}
-              <option value="{{ Control.id }}" selected>{{ Control.name }}</option>
+      <label>Типы объектов среды
+  <select name="newenvobject" multiple size="10">
+      {% for envobject in envobject_all %}
+          {% if envobject in information.envobject_information.all %}
+              <option value="{{ envobject.id }}" selected>{{ envobject.name }}</option>
           {% else %}
-    <option value="{{ Control.id }}">{{ Control.name }}</option>
+    <option value="{{ envobject.id }}">{{ envobject.name }}</option>
       {% endif %}
       {% endfor %}
   </select>

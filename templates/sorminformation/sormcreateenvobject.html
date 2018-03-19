@@ -4,8 +4,8 @@
 
 {% block sormcreateenvobject %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Создание объекта среды</h2>
     <div class="primary callout">
       <p><strong>Укажите наименование объекта среды и нажмите "Сохранить"</strong></p>
@@ -14,9 +14,8 @@
 </div>
 
     <form action="/information/create_envobject" method="post">{% csrf_token %}
-<div class="row">
-
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
 
 
     <label>Имя объекта среды

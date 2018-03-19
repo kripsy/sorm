@@ -4,8 +4,8 @@
 
 {% block sormcreateinformation %}
 
-<div class="row">
-  <div class="columns">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
     <h2>Создание информационного актива</h2>
     <div class="primary callout">
       <p><strong>Укажите наименование информационного актива, тип информационного актива и категорию информационного актива и нажмите "Сохранить"</strong></p>
@@ -15,9 +15,13 @@
 
     <form action="/information/create_information" method="post">
     {% csrf_token %}
-<div class="row">
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
 
-  <div class="columns">
+  <label>Наименование информационного актива
+    <input type="text" placeholder="Наименование информационного актива" required name = "information_name">
+    </label>
+
 
   <label>Тип информационного актива
   <select name = type_information>
@@ -28,14 +32,20 @@
 </label>
 
 
-    <label>Имя организационной единицы
-    <input type="text" placeholder="Наименование информационного актива" required name = "information_name">
-    </label>
 
    <label>Категория информационного актива
   <select name = category_information>
     {% for category_information in Category_information_all %}
         <option value="{{ category_information.id }}">{{ category_information.name }}</option>
+    {% endfor %}
+</select>
+</label>
+
+
+  <label>Уровень защиты информационного актива
+  <select name = levelprotection_information>
+    {% for levelprotection_information in levelprotection_information_all %}
+        <option value="{{ levelprotection_information.id }}">{{ levelprotection_information.name }}</option>
     {% endfor %}
 </select>
 </label>

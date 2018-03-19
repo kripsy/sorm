@@ -11,8 +11,8 @@
 {% extends 'sorm/mainsorm.html' %}
 
 {% block sormauthsormauth %}
-<div class="row">
-    <div class="columns small-6 large-centered"><!-- ... -->
+<div class="grid-container">
+      <div class="cell medium-2 large-2">
 <form class="callout text-center" action="/auth/login" method="post">
     {% csrf_token %}
   <h2>Login</h2>
@@ -31,9 +31,14 @@
 
 
   </div>
-</form>
     </div>
+
+
     {% endblock %}
+
+
+
+
 
 
 <script src="/static/js/vendor/jquery.js"></script>

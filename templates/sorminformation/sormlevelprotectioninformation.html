@@ -2,11 +2,11 @@
 
 {% extends 'sorm/mainsorm.html' %}
 
-{% block sormcontrol %}
+{% block sormlevelprotectioninformation %}
 
 <div class="grid-container">
       <div class="cell medium-2 large-2">
-    <h2>Таблица контрмер</h2>
+    <h2>Таблица уровней защиты информации</h2>
   </div>
 </div>
 
@@ -16,19 +16,19 @@
       <table>
         <thead>
           <tr>
-            <th>Наименование контрмеры</th>
-              <th>Тип реализации контрмеры</th>
-              <th>Удалить</th>
+              <th>Наименование уровня защиты информации</th>
+            <!--  <th>Изменить</th>
+          -->
           </tr>
         </thead>
 
 
             <tbody>
-            {% for Control in Control_all %}
+            {% for Levelprotection in Levelprotection_all %}
               <tr>
-                <td>{{ Control.name }}</td>
-                  <td>{{ Control.type_realization.name }}</td>
-              <td><a href="/control/delete_control/{{ Control.id }}" class="button">Удалить</a></td>
+                <td>{{ Levelprotection.name }}</td>
+<!--                   <td style="display:block;"><a href="/information/delete_category_information/{{ Categoryinformation.id }}" class="button">Удалить</a></td>
+     -->
               </tr>
             {% endfor %}
             </tbody>
